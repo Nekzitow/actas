@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 /*Rutas para el modulo de control escolar*/
-Route::get('modules/actas', 'actasControlador@inicio');
+Route::get('modules/actas/grupo/{idGrupo}/{idCiclo}/{idCarrera}', 'actasControlador@inicio');
+Route::get('modules/actas/', 'actasControlador@menu');
+Route::get('modules/actas/pdf/{idAsignacion}', 'actasControlador@exportpdf');
+Route::get('modules/actas/agregar/acta', 'actasControlador@agregarActa');
+//Route::get('modules/actas/imprime/acta', 'actasControlador@exportpdf');
+Route::post('modules/actas/agregar/guardarActa', 'actasControlador@guardarActa');
+Route::post('modules/actas/delete', 'actasControlador@delete');
+/*Route::auth();
 
-Route::get('modules/agregar/acta', 'actasControlador@agregarActa');
+Route::get('/', 'HomeController@index');*/

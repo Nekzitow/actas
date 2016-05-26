@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="{{ asset('components/plugins/daterangepicker/daterangepicker-bs3.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{ asset('components/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  @yield('css')
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -62,7 +63,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('components/dist/img/avatar5.png')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Miguel Angel</span>
+              <span class="hidden-xs">Miguel</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -70,7 +71,7 @@
                 <img src="{{ asset('components/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  Miguel Angel Osorio Cruz - Desarrollo de sistemas
+                 Miguel - Desarrollo de sistemas
                   
                 </p>
               </li>
@@ -102,7 +103,7 @@
           <img src="{{ asset('components/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Miguel Angel Osorio Cruz</p>
+          <p></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -113,7 +114,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menú de navegación</li>
         <li>
-          <a href="/menuprincipal">
+          <a href="/modules/actas/">
             <i class="fa fa-dashboard"></i> <span>Menu Principal</span></i>
           </a>
           
@@ -366,5 +367,6 @@
 <script src="{{ asset('components/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('components/dist/js/demo.js')}}"></script>
+@yield('js')
 </body>
 </html>
