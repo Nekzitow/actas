@@ -138,7 +138,7 @@ class ImprimeActa{
         $docente = Docente::where("id",$asignacion[0]->id_docente)->get();
         if ($docente->isEmpty()) { 
 
-        	return redirect()->back()->withErrors(['NO SE ENCOTRO EL DOCENTE ASIGNADO PARA LA MATERIA: '.utf8_decode($asignacion[0]->materia)]);
+        	return redirect()->back()->withErrors(['NO SE ENCOTRO EL DOCENTE ASIGNADO PARA LA MATERIA: '.$asignacion[0]->materia]);
         }
         $turno = ["MATUTINO",'VESPERTINO'];
     	$fpdi = new \fpdi\FPDI('P', 'mm', 'A4');
