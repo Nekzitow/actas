@@ -63,7 +63,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('components/dist/img/avatar5.png')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Miguel</span>
+              <span class="hidden-xs">{{ Auth::user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -71,8 +71,7 @@
                 <img src="{{ asset('components/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
 
                 <p>
-                 Miguel - Desarrollo de sistemas
-                  
+                  {{ Auth::user()->name }}
                 </p>
               </li>
               <li class="user-footer">
@@ -80,7 +79,8 @@
                   <a href="#" class="btn btn-default btn-flat">Mi perfil</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Cerrar sesión</a>
+                  <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"><i class="fa fa-btn fa-sign-out"></i>Cerrar Sesión</a>
+                  <!--<a href="#" class="btn btn-default btn-flat">Cerrar sesión</a>-->
                 </div>
               </li>
             </ul>
@@ -103,7 +103,7 @@
           <img src="{{ asset('components/dist/img/avatar5.png')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p></p>
+          <p>{{ Auth::user()->name }}</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
@@ -338,6 +338,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
+@yield('js')
 <!-- Bootstrap 3.3.6 -->
 <script src="{{ asset('components/bootstrap/js/bootstrap.min.js')}}"></script>
 <!-- Morris.js charts -->
@@ -367,6 +368,7 @@
 <script src="{{ asset('components/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('components/dist/js/demo.js')}}"></script>
-@yield('js')
+<script src="{{ asset('components/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('components/plugins/datatables/dataTables.bootstrap.min.js')}}"></script>
 </body>
 </html>
