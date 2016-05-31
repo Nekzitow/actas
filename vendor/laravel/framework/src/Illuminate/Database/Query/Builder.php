@@ -535,6 +535,10 @@ class Builder
         // will be bound to each SQL statements when it is finally executed.
         $type = 'Basic';
 
+        if (Str::contains($column, '->') && is_bool($value)) {
+            $value = new Expression($value ? 'true' : 'false');
+        }
+
         $this->wheres[] = compact('type', 'column', 'operator', 'value', 'boolean');
 
         if (! $value instanceof Expression) {
@@ -2046,7 +2050,9 @@ class Builder
 
         $sql = $this->grammar->compileUpdate($this, $values);
 
-        return $this->connection->update($sql, $this->cleanBindings($bindings));
+        return $this->connection->update($sql, $this->cleanBindings(
+            $this->grammar->prepareBindingsForUpdate($bindings, $values)
+        ));
     }
 
     /**
@@ -2296,6 +2302,23 @@ class Builder
         $this->useWritePdo = true;
 
         return $this;
+    }
+
+    /**
+     * Use a different connection for the query.
+     *
+     * @param  \Illuminate\Database\ConnectionInterface  $connection
+     * @param  \Illuminate\Database\Query\Grammars\Grammar  $grammar
+     * @param  \Illuminate\Database\Query\Processors\Processor  $processor
+     * @return void
+     */
+    public function useConnection(ConnectionInterface $connection,
+                                  Grammar $grammar = null,
+                                  Processor $processor = null)
+    {
+        $this->connection = $connection;
+        $this->grammar = $grammar ?: $connection->getQueryGrammar();
+        $this->processor = $processor ?: $connection->getPostProcessor();
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 namespace App\Clases;
 
-use Fpdf;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Carreras;

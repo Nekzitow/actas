@@ -22,11 +22,10 @@
     18 => 'Illuminate\\Translation\\TranslationServiceProvider',
     19 => 'Illuminate\\Validation\\ValidationServiceProvider',
     20 => 'Illuminate\\View\\ViewServiceProvider',
-    21 => 'Anouar\\Fpdf\\FpdfServiceProvider',
-    22 => 'App\\Providers\\AppServiceProvider',
-    23 => 'App\\Providers\\AuthServiceProvider',
-    24 => 'App\\Providers\\EventServiceProvider',
-    25 => 'App\\Providers\\RouteServiceProvider',
+    21 => 'App\\Providers\\AppServiceProvider',
+    22 => 'App\\Providers\\AuthServiceProvider',
+    23 => 'App\\Providers\\EventServiceProvider',
+    24 => 'App\\Providers\\RouteServiceProvider',
   ),
   'eager' => 
   array (
@@ -39,11 +38,10 @@
     6 => 'Illuminate\\Pagination\\PaginationServiceProvider',
     7 => 'Illuminate\\Session\\SessionServiceProvider',
     8 => 'Illuminate\\View\\ViewServiceProvider',
-    9 => 'Anouar\\Fpdf\\FpdfServiceProvider',
-    10 => 'App\\Providers\\AppServiceProvider',
-    11 => 'App\\Providers\\AuthServiceProvider',
-    12 => 'App\\Providers\\EventServiceProvider',
-    13 => 'App\\Providers\\RouteServiceProvider',
+    9 => 'App\\Providers\\AppServiceProvider',
+    10 => 'App\\Providers\\AuthServiceProvider',
+    11 => 'App\\Providers\\EventServiceProvider',
+    12 => 'App\\Providers\\RouteServiceProvider',
   ),
   'deferred' => 
   array (
