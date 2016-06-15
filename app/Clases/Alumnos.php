@@ -5,7 +5,7 @@
 	/**
 	* 
 	*/
-	class Alumno {
+	class Alumnos {
 		
 		function __construct($argument) {
 			# code...
@@ -20,7 +20,7 @@
 				$result =  Alumno_Calificacion::where('id_asignacion_acta',$asignacion)->delete();
 				return true;
 			} catch (Exception $e) {
-				return false;
+				return $e->getMessage();
 			}
 		}
 	}
