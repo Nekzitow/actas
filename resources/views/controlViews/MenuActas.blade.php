@@ -23,7 +23,7 @@
 </style>
 @section('menuLateral')
     <li class="active">
-        <a href="/modules/actas/agregar/acta">
+        <a href=" {{ url('/modules/actas/agregar/acta') }}">
             <i class="fa fa-files-o"></i></i> <span>Generar Acta</span></i>
         </a>
     </li>
@@ -66,8 +66,8 @@
                                 <thead>
                                 <tr>
                                     <th width="5">#</th>
-                                    <th class="col-md-2 col-xs-2">Grupo</th>
-                                    <th class="col-md-3 col-xs-3">Carrera</th>
+                                    <th class="col-md-1 col-xs-1">Grupo</th>
+                                    <th class="col-md-4 col-xs-4">Carrera</th>
                                     <th class="col-md-3 col-xs-2">Modalidad</th>
                                     <th class="col-md-2 col-xs-2">Ciclo</th>
                                     <th class="col-md-3 col-xs-3">Acciones</th>
@@ -89,7 +89,7 @@
                                                onclick="setValue({{ $grupo->id }},{{ $grupo->id_ciclos }},{{ $grupo->id_carrera }},'{{ $grupo->modalidad }}',this)">
                                                 <i class="fa fa-trash fa-lg"></i>
                                             </a>
-                                            <a href="/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
+                                            <a href="{{url("/")}}/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
                                                class="btn btn-primary" title="Ver Actas">
                                                 <i class="fa fa-arrow-right fa-lg"></i>
                                             </a>
@@ -108,7 +108,7 @@
                                                onclick="setValue({{ $grupo->id }},{{ $grupo->id_ciclos }},{{ $grupo->id_carrera }},'{{ $grupo->modalidad }}',this)">
                                                 <i class="fa fa-trash fa-lg"></i>
                                             </a>
-                                            <a href="/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
+                                            <a href="{{url("/")}}/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
                                                class="btn btn-primary" title="Ver Actas">
                                                 <i class="fa fa-arrow-right fa-lg"></i>
                                             </a>
@@ -127,7 +127,7 @@
                                                onclick="setValue({{ $grupo->id }},{{ $grupo->id_ciclos }},{{ $grupo->id_carrera }},'{{ $grupo->modalidad }}',this)">
                                                 <i class="fa fa-trash fa-lg"></i>
                                             </a>
-                                            <a href="/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
+                                            <a href="{{url("/")}}/modules/actas/grupo/{{ $grupo->id }}/{{ $grupo->id_ciclos }}/{{ $grupo->id_carrera }}/{{$grupo->modalidad}}"
                                                class="btn btn-primary" title="Ver Actas">
                                                 <i class="fa fa-arrow-right fa-lg"></i>
                                             </a>
@@ -169,7 +169,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" onclick="deleteRow()">Aceptar</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
             </div>
 

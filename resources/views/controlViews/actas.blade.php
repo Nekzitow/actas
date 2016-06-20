@@ -19,7 +19,7 @@
 </style>
  @section('menuLateral')
   <li class="active">
-    <a href="/modules/actas/agregar/acta">
+    <a href=" {{ url('/modules/actas/agregar/acta') }}">
       <i class="fa fa-files-o"></i></i> <span>Generar Acta</span></i>
     </a>   
   </li>

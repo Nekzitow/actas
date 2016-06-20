@@ -10,6 +10,7 @@ use App\Docente;
 use App\Grupos_acta;
 use App\Http\Requests;
 use App\Materias_acta;
+use Mockery\CountValidator\Exception;
 
 class ImprimeActa
 {
@@ -81,7 +82,7 @@ class ImprimeActa
 					}
 				}
 				if (count(str_split($data[1])) > 2 && $data[3] != 'Nombre del Alumno(a)' && $data[1] != 'Matricula') {
-					array_push($alumns, array($data[1], $data[6]));
+					array_push($alumns, array($data[1], $data[6]+0));
 				}
 
 			}
@@ -103,7 +104,7 @@ class ImprimeActa
 
 			}
 			fclose($fp);
-			return view('controlViews.actas');
+
 		} catch (Exception $e) {
 			return redirect()->back()->withErrors(["error", "archivo no soportado"]);
 		}
@@ -121,7 +122,7 @@ class ImprimeActa
 			$this->guardarAlumnos($alumnos, $idAsignacion);
 			return $idAsignacion;
 		} catch (Exception $e) {
-			return 0;
+			return redirect()->back()->withErrors(["error", $e->getMessage()]);
 		}
 	}
 
@@ -260,7 +261,7 @@ class ImprimeActa
 				$y += 6;
 			} elseif ($i > 16 && $i < 18) {
 				$y += 6;
-			} elseif (($i > 18 && $i < 20) || ($i > 20 && $i < 22)) {
+			} elseif (($i > 18 && $i < 20) || ($i > 20 && $i < 22) || ($i > 30 && $i < 32) || ($i > 35 && $i < 37)) {
 				$y += 6.5;
 			} else {
 				$y += 5;
@@ -280,20 +281,25 @@ class ImprimeActa
 	 */
 	public function guardaActa()
 	{
-		$asignacion = new Asignacion_acta;
-		$asignacion->turno = $this->turno;
-		$asignacion->clave_dse = $this->dse;
-		$asignacion->id_grupos_acta = $this->grupo;
-		$asignacion->id_ciclos = $this->ciclo;
-		$asignacion->id_docente = $this->idDocente;
-		$asignacion->materia = $this->nombreMateria;
-		$asignacion->modalidad = $this->esco;
-		$asignacion->id_carrera = $this->carrera;
-		$asignacion->save();
-		$idAsignacion = Asignacion_acta::where([['id_grupos_acta', $this->grupo],
-			['id_docente', $this->idDocente],
-			['id_ciclos', $this->ciclo]])->max('id');
-		return $idAsignacion;
+		try{
+			$asignacion = new Asignacion_acta;
+			$asignacion->turno = $this->turno;
+			$asignacion->clave_dse = $this->dse;
+			$asignacion->id_grupos_acta = $this->grupo;
+			$asignacion->id_ciclos = $this->ciclo;
+			$asignacion->id_docente = $this->idDocente;
+			$asignacion->materia = $this->nombreMateria;
+			$asignacion->modalidad = $this->esco;
+			$asignacion->id_carrera = $this->carrera;
+			$asignacion->save();
+			$idAsignacion = Asignacion_acta::where([['id_grupos_acta', $this->grupo],
+				['id_docente', $this->idDocente],
+				['id_ciclos', $this->ciclo]])->max('id');
+			return $idAsignacion;
+		}catch (Exception $e){
+			return redirect()->back()->withErrors(["error", $e->getMessage()]);
+		}
+
 	}
 
 	/**
@@ -302,13 +308,18 @@ class ImprimeActa
 	 */
 	public function guardarAlumnos($arrayAlumno, $idAsignacion)
 	{
-		for ($i = 0; $i < count($arrayAlumno); $i++) {
-			$alumno = new Alumno_Calificacion;
-			$alumno->calificacion = $arrayAlumno[$i][1];
-			$alumno->matricula_alumnos_acta = $arrayAlumno[$i][0];
-			$alumno->id_asignacion_acta = $idAsignacion;
-			$alumno->save();
+		try {
+			for ($i = 0; $i < count($arrayAlumno); $i++) {
+				$alumno = new Alumno_Calificacion;
+				$alumno->calificacion = $arrayAlumno[$i][1];
+				$alumno->matricula_alumnos_acta = $arrayAlumno[$i][0];
+				$alumno->id_asignacion_acta = $idAsignacion;
+				$alumno->save();
+			}
+		}catch (Exception $e){
+			return redirect()->back()->withErrors(["error", $e->getMessage()]);
 		}
+
 
 	}
 

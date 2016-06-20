@@ -42,7 +42,7 @@
                   </div>
               @endif
               <form role="form" method="POST" class="form-horizontal" action="{{action('actasControlador@guardarActa')}}" enctype="multipart/form-data">
-              <input type="hidden" name="_token" value="{{{ csrf_token() }}}" />
+              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <div class="box-body">
                 <div class="form-group">
                     <label for="carrera" class="col-sm-2 control-label">Carrera</label>

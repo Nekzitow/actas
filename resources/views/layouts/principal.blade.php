@@ -114,7 +114,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menú de navegación</li>
         <li>
-          <a href="/modules/actas/">
+          <a href="{{ url('/modules/actas/') }}">
             <i class="fa fa-dashboard"></i> <span>Menu Principal</span></i>
           </a>
           

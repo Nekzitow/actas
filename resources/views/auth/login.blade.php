@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('components/dist/css/AdminLTE.min.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('components/plugins/iCheck/square/blue.css')}}">
     <link rel="stylesheet" href="{{ asset('components/plugins/iCheck/flat/blue.css')}}">
 
 </head>
@@ -55,8 +55,8 @@
 
                         @if ($errors->has('email'))
                             <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -87,7 +87,7 @@
 
                 <div class="form-group">
                     <div class="col-md-8 col-md-offset-3">
-                        <button type="submit" class="btn btn-primary pull-right">
+                        <button type="submit" class="btn btn-primary pull-right btn-flat">
                             <i class="fa fa-btn fa-sign-in"></i> Ingresar
                         </button>
 
