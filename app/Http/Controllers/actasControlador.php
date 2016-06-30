@@ -22,7 +22,7 @@ class actasControlador extends Controller
 	 */
 	public function inicio(Request $request)
 	{
-		if (Auth::check()) {
+		//if (Auth::check()) {
 			$asignacion = Asignacion_acta::join('control.grupos_acta', 'asignacion_acta.id_grupos_acta', '=', 'grupos_acta.id')
 				->join('control.ciclos', 'asignacion_acta.id_ciclos', '=', 'ciclos.id')
 				->join('control.carreras', 'carreras.id', '=', 'id_carrera')
@@ -30,8 +30,8 @@ class actasControlador extends Controller
 				->where([['id_grupos_acta', $request->idGrupo], ['ciclos.id', $request->idCiclo], ['carreras.id', $request->idCarrera],
 					['modalidad', $request->modalidad . ""]])->get();
 			return view('controlViews.actas', ['asignacion' => $asignacion]);
-		} else
-			return redirect()->action('HomeController@index');
+		//} else
+		//	return redirect()->action('HomeController@index');
 	}
 
 	/**
@@ -39,7 +39,7 @@ class actasControlador extends Controller
 	 */
 	public function menu()
 	{
-		if (Auth::check()) {
+		//if (Auth::check()) {
 			$results = DB::select('select * from users where id = :id', ['id' => 1]);
 			$gruposEsco = Grupos_acta::distinct()->join('control.asignacion_acta', 'asignacion_acta.id_grupos_acta', '=', 'grupos_acta.id')
 				->join('control.ciclos', 'asignacion_acta.id_ciclos', '=', 'ciclos.id')
@@ -56,16 +56,16 @@ class actasControlador extends Controller
 			return view('controlViews.MenuActas', ['grupos' => $gruposEsco, 'gruposS' => $gruposSabados, 'gruposD' => $gruposDomingos]);
 			// Si está autenticado lo mandamos a la raíz donde estara el mensaje de bienvenida.
 
-		} else {
-			return redirect()->action('HomeController@index');
-		}
+		//} else {
+		//	return redirect()->action('HomeController@index');
+		//}
 
 
 	}
 
 	public function agregarActa()
 	{
-		if (Auth::check()) {
+		//if (Auth::check()) {
 			$carreras = Carreras::where('id_campus', 1)->get();
 			$grupos = Grupos_acta::where('id_campus', 1)->get();
 			$ciclos = ciclos::all();
@@ -73,13 +73,13 @@ class actasControlador extends Controller
 			return view('controlViews.agregarActa', ['carreras' => $carreras,
 				'grupos' => $grupos,
 				'ciclos' => $ciclos]);
-		} else
-			return redirect()->action('HomeController@index');
+		//} else
+			//return redirect()->action('HomeController@index');
 	}
 
 	public function guardarActa(Request $request)
 	{
-		if (Auth::check()) {
+		//if (Auth::check()) {
 			//Validamos los campos del formulario
 			$validacion = \Validator::make($request->all(), [
 				'clavedse' => 'required',
@@ -108,9 +108,9 @@ class actasControlador extends Controller
 					return redirect()->back()->withErrors([$file->getClientOriginalName() . " : Archivo no soportado"]);
 				}
 			}
-		} else {
-			return redirect()->action('HomeController@index');
-		}
+		//} else {
+		//	return redirect()->action('HomeController@index');
+		//}
 
 
 		//$post = $request->all();
