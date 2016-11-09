@@ -201,7 +201,7 @@ class ImprimeActa
 		foreach ($alumnos as $key) {
 			if ($i > 26 && $i < 28) {
 				$fpdi->setXY(15, 250);
-				$fpdi->write(15, "LIC. IVON ESPINOSA SANTOS");
+				$fpdi->write(15, iconv('UTF-8', 'windows-1252', "LIC.MARIA GUADALUPE ESQUINCA ZUÑIGA"));
 				$fpdi->setXY(120, 250);
 				$fpdi->write(15, "LIC. " . utf8_decode($docente[0]->nombre . ""));
 				$fpdi->addPage();
@@ -269,7 +269,7 @@ class ImprimeActa
 		}
 
 		$fpdi->setXY(15, 250);
-		$fpdi->write(15, "LIC. IVON ESPINOSA SANTOS");
+		$fpdi->write(15, iconv('UTF-8', 'windows-1252', "LIC.MARIA GUADALUPE ESQUINCA ZUÑIGA"));
 		$fpdi->setXY(120, 250);
 		$fpdi->write(15, "LIC. " . utf8_decode($docente[0]->nombre));
 		$fpdi->Output();
