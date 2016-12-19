@@ -4,4 +4,16 @@
 Homestead.yaml
 Homestead.json
 .env
+<<<<<<< HEAD
 /storage
+=======
+.idea
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+.env.example
+.gitignore
+.gitattributes
+>>>>>>> 546a4d9e695270cad00c239dcb2b15f99f960720
