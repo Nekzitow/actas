@@ -27,4 +27,15 @@ Route::group(['middleware' => 'auth'], function () {
 //Route::get('modules/actas/imprime/acta', 'actasControlador@exportpdf');
     Route::post('modules/actas/agregar/guardarActa', 'actasControlador@guardarActa');
     Route::post('modules/actas/delete', 'actasControlador@delete');
+
+
+	/**
+	 * Estadistica cuatrimestral
+	 */
+
+	Route::get("modules/estadistica","EstadisticaController@inicio");
+	Route::get("modules/estadistica/add","EstadisticaController@addEstatistica");
+	Route::post("modules/estadistica/save","EstadisticaController@save");
+	Route::delete("modules/estadistica","EstadisticaController@drop");
+	Route::get("modules/estadistica/imprime/{idCiclo}","EstadisticaController@imprime");
 });
