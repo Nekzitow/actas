@@ -364,15 +364,39 @@ class Estadisticas {
 				->join("grupos_acta as gp","gp.id","=","gpa.id_grupos_acta")
 				->join("carreras as c","c.id","=","gpa.id_carreras")
 				->join("modalidad as m","m.id","=","gpa.id_modalidad")
-				->select('c.nombre','gp.grado',DB::raw('COUNT(gp.grado) AS grupos'),
+				->select('c.id AS idCarrera','c.nombre','gp.grado',DB::raw('COUNT(gp.grado) AS grupos'),
 					DB::raw('SUM(hombres) AS hombres'),DB::raw('SUM(mujeres) AS mujeres'),
 					"m.descripcion")
 				->where([["id_ciclos",$idCiclo],["gp.id_campus",$campus],["c.tipo",1]])
-				->groupBy('descripcion','c.nombre','gp.grado')
-				->orderBy('c.nombre',"m.descripcion","DESC")->get();
+				->groupBy('descripcion','c.nombre','gp.grado','idCarrera')
+				->orderBy('c.nombre')
+				->orderBy("m.descripcion","DESC")
+				->orderBy('gp.grado')->get();
 			return $estadisticas;
 		}catch (QueryException $e){
 			return ["error"=>"Error al obtener la lista de estadísticas: ".$e->getMessage()];
 		}
 	}
+
+	public static function getEstadisticasP($idCiclo,$campus){
+		try{
+			$estadisticas = Estadistica::join("asignacion_grupos AS gpa","gpa.id","id_asignacion_grupos")
+				->join("grupos_acta as gp","gp.id","=","gpa.id_grupos_acta")
+				->join("carreras as c","c.id","=","gpa.id_carreras")
+				->join("modalidad as m","m.id","=","gpa.id_modalidad")
+				->select('c.id AS idCarrera','c.nombre','gp.grado',DB::raw('COUNT(gp.grado) AS grupos'),
+					DB::raw('SUM(hombres) AS hombres'),DB::raw('SUM(mujeres) AS mujeres'),
+					"m.descripcion")
+				->where([["id_ciclos",$idCiclo],["gp.id_campus",$campus],["c.tipo",2]])
+				->groupBy('descripcion','c.nombre','gp.grado','idCarrera')
+				->orderBy('c.nombre')
+				->orderBy("m.descripcion","DESC")
+				->orderBy('gp.grado')->get();
+			return $estadisticas;
+		}catch (QueryException $e){
+			return ["error"=>"Error al obtener la lista de estadísticas: ".$e->getMessage()];
+		}
+	}
+
+
 }

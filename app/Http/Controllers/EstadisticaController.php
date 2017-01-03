@@ -71,7 +71,14 @@ class EstadisticaController extends Controller
 
 	public function imprime(Request $request){
 		$idCiclo = $request->idCiclo;
+		$tipo = $request->tipo;
 		$imprimeesta = new ImprimeEstadistica();
-		$imprimeesta->imprime($idCiclo);
+		$imprimeesta->imprime($idCiclo,$tipo);
+	}
+
+	public function imprimemaep(Request $request){
+		$idCiclo = $request->idCiclo;
+		$imprimeesta = new ImprimeEstadistica();
+		$imprimeesta->imprimeMaep($idCiclo);
 	}
 }

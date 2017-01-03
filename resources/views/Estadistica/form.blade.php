@@ -2,8 +2,8 @@
 @section('title', 'Actas')
 @section('menuLateral')
     <li class="active">
-        <a href="/modules/actas/agregar/acta">
-            <i class="fa fa-files-o"></i></i> <span>Generar Asignacion</span></i>
+        <a href=" {{ url('/modules/estadistica') }}">
+            <i class="fa fa-area-chart"></i></i> <span>Estadística</span></i>
         </a>
     </li>
 @endsection

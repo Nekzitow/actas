@@ -17,3 +17,6 @@ Homestead.json
 .gitignore
 .gitattributes
 >>>>>>> 546a4d9e695270cad00c239dcb2b15f99f960720
+/storage/logs/laravel.log
+/storage/logs/
+/.idea/

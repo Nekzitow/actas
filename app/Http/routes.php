@@ -37,5 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get("modules/estadistica/add","EstadisticaController@addEstatistica");
 	Route::post("modules/estadistica/save","EstadisticaController@save");
 	Route::delete("modules/estadistica","EstadisticaController@drop");
-	Route::get("modules/estadistica/imprime/{idCiclo}","EstadisticaController@imprime");
+	Route::get("modules/estadistica/imprime/{idCiclo}/{tipo}","EstadisticaController@imprime");
+	Route::get("modules/estadistica/imprimemaep/{idCiclo}","EstadisticaController@imprimemaep");
 });

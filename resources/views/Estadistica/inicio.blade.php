@@ -23,8 +23,8 @@
 </style>
 @section('menuLateral')
     <li class="active">
-        <a href=" {{ url('/modules/actas/agregar/acta') }}">
-            <i class="fa fa-files-o"></i></i> <span>Generar Asignacion</span></i>
+        <a href=" {{ url('/modules/estadistica') }}">
+            <i class="fa fa-area-chart"></i></i> <span>Estadística</span></i>
         </a>
     </li>
 @endsection
@@ -100,11 +100,20 @@
                                         <td>{{$asignacion->hombres}}</td>
                                         <td>{{$asignacion->mujeres}}</td>
                                         <td>
-                                            <a class="btn btn-danger" title="Eliminar Estadistica"
+                                            <a class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Eliminar Estadística"
                                                onclick="setValue('{{ $asignacion->id }}',this)"><i
                                                         class="fa fa-trash fa-lg"></i></a>
-                                            <a class="btn btn-info" title="Imprimir"
-                                               href="{{ url('modules/estadistica/imprime/')."/".$asignacion->id }}">
+                                            <a class="btn btn-info" data-toggle="tooltip" data-placement="bottom" title="Imprimir CGMAC Licenciaturas"
+                                               href="{{ url('modules/estadistica/imprime/')."/".$asignacion->id."/". 1}}" target="_blank">
+                                                <i class="fa fa-file-pdf-o fa-lg"></i>
+                                            </a>
+                                            <a class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Imprimir CGMAC Posgrado"
+                                               href="{{ url('modules/estadistica/imprime/')."/".$asignacion->id."/". 2 }}" target="_blank">
+                                                <i class="fa fa-file-pdf-o fa-lg"></i>
+                                            </a>
+
+                                            <a class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="Imprimir MAEP"
+                                               href="{{ url('modules/estadistica/imprimemaep/')."/".$asignacion->id}}" target="_blank">
                                                 <i class="fa fa-file-pdf-o fa-lg"></i>
                                             </a>
                                         </td>
@@ -229,6 +238,7 @@
             });
             $("#tablaGrupos_filter").addClass("pull-right");
             $("#tablaGrupos_paginate").addClass("pull-right");
+            $('[data-toggle="tooltip"]').tooltip();
         });
     </script>
 @endsection
