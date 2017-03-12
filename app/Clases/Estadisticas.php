@@ -182,9 +182,6 @@ class Estadisticas {
 						}
 
 					}
-					/*($arrayData); $i++){
-						if ($arrayData[])
-					}*/
 				}elseif($data[2] != "" && ($data[0] == "" && $data[1] == "")){
 					//echo $data[2]."   ".$data[5]."    ".$data[10]."<br>";
 					$arrayData = str_split($data[2]);
@@ -260,7 +257,7 @@ class Estadisticas {
 				return $respuesta;
 			}
 		} catch (QueryException $e) {
-			return ["Error al guardar las estadisticas"];
+			return ["error"=>"Error al guardar las estadisticas".$e->getMessage()];
 		}
 	}
 	public static function getIdModalidad($modalidad,$nomenclatura){

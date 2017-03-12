@@ -116,7 +116,7 @@
       <ul class="sidebar-menu">
         <li class="header">Menú de navegación</li>
         <li>
-          <a href="{{ url('/modules/actas/') }}">
+          <a href="{{ url('/') }}">
             <i class="fa fa-dashboard"></i> <span>Menu Principal</span></i>
           </a>
           
@@ -133,7 +133,10 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-   
+    <div class="pull-right hidden-xs">
+      <b>SIUM - Version</b> Alfa
+    </div>
+    <strong>Copyright &copy; <a href="http://www.universidadmaya.edu.mx">Departamento de Sistemas</a>.</strong>
   </footer>
 
   <!-- Este solo se habiltara para el super usuario -->

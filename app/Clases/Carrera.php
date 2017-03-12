@@ -115,4 +115,13 @@ class Carrera {
 			return ["error"=>"Error al obtener las carresas: ".$e->getMessage()];
 		}
 	}
+
+	public static function getCarreraSingle($idCarrera){
+		try{
+			$carrera = Carreras::find($idCarrera);
+			return $carrera;
+		}catch (QueryException $exception){
+			return ["error"=>"No se ejecuto la sentencia: ".$exception->getMessage()];
+		}
+	}
 }
